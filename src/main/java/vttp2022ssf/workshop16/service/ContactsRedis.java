@@ -17,7 +17,10 @@ public class ContactsRedis implements ContactsRepo {
 
     @Override
     public void save(final Contact ctc) {
-        redisTemplate.opsForValue().set(ctc.getId(), ctc);
+        
+        redisTemplate.opsForHash().put("c0", "gameName", “fred@gmail.com”); 
+        redisTemplate.opsForHash().put("c0", "ageGroup", 100);
+        // redisTemplate.opsForValue().set(ctc.getId(), ctc);
     }
 
     @Override
