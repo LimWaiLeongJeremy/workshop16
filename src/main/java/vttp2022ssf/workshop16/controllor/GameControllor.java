@@ -49,15 +49,11 @@ public class GameControllor {
     }
 
             
-        @GetMapping (path = "/borsdgame/{gameName}")
-        public ResponseEntity<String> getgameDetail() {
-            @PathVariable((name = "gameName") String gameName) {
-
-            }
-            Game game = new Game("Monopoly", 25);
-            return ResponseEntity.ok(body);
-            
-        }
+    @GetMapping (path = "/borsdgame/{gameName}")
+    public ResponseEntity<String> getgameDetail(@PathVariable(name = "gameName") String gameName) {
+            Game game = gameSvc.load(gameName);
+        return ResponseEntity.ok(game.toString());
+    }
 
         
 
