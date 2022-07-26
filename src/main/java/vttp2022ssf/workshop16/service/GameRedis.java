@@ -13,7 +13,7 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
-// import sg.edu.nus.iss.Workshop14.model.Contact;
+import vttp2022ssf.workshop16.model.Game;;
 
 @Service
 public class GameRedis implements GameRepo {
@@ -23,23 +23,20 @@ public class GameRedis implements GameRepo {
     RedisTemplate<String, Object> redisTemplate;
 
     @Override
-    public void save(final Contact ct) {
-        
-        String jsonString;
-        try (InputStream is = new ByteArrayInputStream(jsonString.getBytes())) {
-            JsonReader reader = Json.createReader(is);
-            JsonObject data = reader.readObject();
-        } 
-        logger.info.data.toString;
-        redisTemplate.opsForHash().put("c0", "gameName", “”); 
-        redisTemplate.opsForHash().put("c0", "ageGroup", 100);
-        // redisTemplate.opsForValue().set(ctc.getId(), ctc);
+    public void save(final JsonObject body) {
+        redisTemplate.opsForHash().put("Games", "gameName", body.toString());
+        redisTemplate.opsForHash().put("Games", "ageGroup", body.toString());
+        // logger.info((String) redisTemplate.opsForHash().get("Games", "gameName"));
+        // logger.info((String) redisTemplate.opsForHash().get("Games", "ageGroup"));
     }
 
     @Override
-    public Contact findById(final String contactId) {
-        Contact result = (Contact) redisTemplate.opsForValue().get(contactId);
-        logger.info(">>> " + result.getEmail());
-        return result;
+    public Game load(final String gameName) {
+        Game getDB;
+        getDB = (Game) redisTemplate.opsForHash().get("Games", "gameName"); 
+        getDB = (Game) redisTemplate.opsForHash().get("Games", "ageGroup");
+        logger.info(">>> " + getDB.getGameName());
+        logger.info(">>> " + getDB.getAgeGroup());
+        return getDB;
     }
 }

@@ -4,10 +4,12 @@ public class Game {
     private String gameName;
     private int ageGroup;
 
+    
     public Game(String gameName, int ageGroup) {
         this.gameName = gameName;
         this.ageGroup = ageGroup;
     }
+
 
     public String getGameName() {
         return gameName;

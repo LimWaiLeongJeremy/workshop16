@@ -1,9 +1,10 @@
 package vttp2022ssf.workshop16.service;
 
+import jakarta.json.JsonObject;
 import vttp2022ssf.workshop16.model.Game;;
 
 public interface GameRepo {
-    public void save(final Game ctc);
+    public void save(final JsonObject body);
 
-    public Game find(final String contactId);
+    public Game load(final String gameName);
 }
